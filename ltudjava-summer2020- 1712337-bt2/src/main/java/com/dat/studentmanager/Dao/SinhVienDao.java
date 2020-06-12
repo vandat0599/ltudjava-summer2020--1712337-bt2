@@ -2,7 +2,7 @@ package com.dat.studentmanager.Dao;
 
 import com.dat.studentmanager.Pojo.SinhVien;
 
-public class SinhVienUserDao implements UserDao<SinhVien> {
+public class SinhVienDao implements UserDao<SinhVien> {
 
     public void dangXuat(SinhVien sinhVien) {
 
@@ -13,6 +13,14 @@ public class SinhVienUserDao implements UserDao<SinhVien> {
     }
 
     public void doiMatKhau(SinhVien sinhVien) {
+
+    }
+
+    public void xemDiem(){
+
+    }
+
+    public void phucKhao(){
 
     }
 }
