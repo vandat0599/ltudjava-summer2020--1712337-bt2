@@ -17,6 +17,8 @@ public class MonHoc implements Serializable {
     @ManyToMany(mappedBy = "monHocs")
     private Set<SinhVien> sinhViens;
 
+    public MonHoc(){}
+
     public MonHoc(String maMonHoc, String tenMonHoc, String phongHoc) {
         this.maMonHoc = maMonHoc;
         this.tenMonHoc = tenMonHoc;

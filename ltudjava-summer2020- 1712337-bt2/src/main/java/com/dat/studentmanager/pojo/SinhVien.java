@@ -24,6 +24,7 @@ public class SinhVien implements Serializable {
             , inverseJoinColumns={@JoinColumn(referencedColumnName="maMonHoc")})
     private Set<MonHoc> monHocs;
 
+    public SinhVien(){}
 
     public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, String maLopHoc) {
         this.mssv = mssv;

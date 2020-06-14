@@ -17,6 +17,8 @@ class User implements Serializable {
     @Column(name = "permission")
     private String permission;
 
+    public User(){}
+
     public User(int id, String userName, String passWord, String permission) {
         this.id = id;
         this.userName = userName;

@@ -15,6 +15,8 @@ public class LopHoc implements Serializable {
     @JoinColumn(name="mssv")
     private Set<SinhVien> sinhViens;
 
+    public LopHoc(){}
+
     public LopHoc(String maLopHoc, Set<SinhVien> sinhViens) {
         this.maLopHoc = maLopHoc;
         this.sinhViens = sinhViens;

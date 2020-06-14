@@ -19,6 +19,8 @@ public class Diem {
     @Column(name = "diemTong")
     private float diemTong;
 
+    public Diem(){}
+
     public Diem(String mssv, String maMonHoc, float diemGK, float diemCK, float diemKhac, float diemTong) {
         this.mssv = mssv;
         this.maMonHoc = maMonHoc;
