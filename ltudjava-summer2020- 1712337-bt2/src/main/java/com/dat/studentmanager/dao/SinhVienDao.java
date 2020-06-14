@@ -1,6 +1,6 @@
-package com.dat.studentmanager.Dao;
+package com.dat.studentmanager.dao;
 
-import com.dat.studentmanager.Pojo.SinhVien;
+import com.dat.studentmanager.pojo.SinhVien;
 
 public class SinhVienDao implements UserDao<SinhVien> {
 

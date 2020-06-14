@@ -1,6 +1,6 @@
-package com.dat.studentmanager.Dao;
+package com.dat.studentmanager.dao;
 
-import com.dat.studentmanager.Pojo.*;
+import com.dat.studentmanager.pojo.*;
 
 public class GiaoVuDao implements UserDao<GiaoVu> {
 

@@ -1,4 +1,8 @@
-package com.dat.studentmanager;
+package com.dat.studentmanager.modules;
+
+import com.dat.studentmanager.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.hql.internal.ast.util.SessionFactoryHelper;
 
 import javax.swing.*;
 
@@ -14,6 +18,10 @@ public class StudentManager extends JFrame {
     }
 
     public static void main(String[] args){
+        Session session = HibernateUtil.getSessionFactory()
+                .getCurrentSession();
+
+        System.out.println("session = " + session);
         JFrame frame = new StudentManager("Student Manager");
         frame.setVisible(true);
     }

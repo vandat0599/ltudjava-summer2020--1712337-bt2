@@ -1,4 +1,4 @@
-package com.dat.studentmanager.Pojo;
+package com.dat.studentmanager.pojo;
 
 import java.util.List;
 

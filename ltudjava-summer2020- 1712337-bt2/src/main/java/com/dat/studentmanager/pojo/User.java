@@ -1,4 +1,4 @@
-package com.dat.studentmanager.Pojo;
+package com.dat.studentmanager.pojo;
 
 class User {
     int id;

@@ -1,4 +1,4 @@
-package com.dat.studentmanager.Pojo;
+package com.dat.studentmanager.pojo;
 
 public class GiaoVu extends User {
     public GiaoVu(int id, String userName, String passWord, String permission) {

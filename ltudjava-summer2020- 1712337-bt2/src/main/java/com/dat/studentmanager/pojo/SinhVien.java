@@ -1,8 +1,9 @@
-package com.dat.studentmanager.Pojo;
+package com.dat.studentmanager.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SinhVien extends User {
+public class SinhVien extends User implements Serializable {
     String mssv;
     String hoTen;
     String gioiTinh;

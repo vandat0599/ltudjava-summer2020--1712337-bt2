@@ -1,4 +1,4 @@
-package com.dat.studentmanager.Pojo;
+package com.dat.studentmanager.pojo;
 
 public class Diem {
     String mssv;
