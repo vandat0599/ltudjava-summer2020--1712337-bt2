@@ -1,12 +1,23 @@
 package com.dat.studentmanager.pojo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Diem")
 public class Diem {
-    String mssv;
-    String maMonHoc;
-    float diemGK;
-    float diemCK;
-    float diemKhac;
-    float diemTong;
+    @Id
+    @Column(name = "mssv")
+    private String mssv;
+    @Column(name = "maMonHoc")
+    private String maMonHoc;
+    @Column(name = "diemGK")
+    private float diemGK;
+    @Column(name = "diemCK")
+    private float diemCK;
+    @Column(name = "diemKhac")
+    private float diemKhac;
+    @Column(name = "diemTong")
+    private float diemTong;
 
     public Diem(String mssv, String maMonHoc, float diemGK, float diemCK, float diemKhac, float diemTong) {
         this.mssv = mssv;

@@ -11,6 +11,10 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/student_manager</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
-<!--        <mapping class="net.javaguides.hibernate.entity.Student" />-->
+        <mapping class="com.dat.studentmanager.pojo.LopHoc" />
+        <mapping class="com.dat.studentmanager.pojo.Diem" />
+        <mapping class="com.dat.studentmanager.pojo.MonHoc" />
+        <mapping class="com.dat.studentmanager.pojo.User" />
+        <mapping class="com.dat.studentmanager.pojo.SinhVien" />
     </session-factory>
 </hibernate-configuration>

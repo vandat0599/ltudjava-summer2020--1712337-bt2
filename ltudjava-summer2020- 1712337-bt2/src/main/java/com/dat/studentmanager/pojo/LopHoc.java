@@ -1,12 +1,21 @@
 package com.dat.studentmanager.pojo;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
-public class LopHoc {
-    String maLopHoc;
-    List<SinhVien> sinhViens;
+@Table(name = "LopHoc")
+public class LopHoc implements Serializable {
+    @Id
+    @Column(name = "maLopHoc")
+    private String maLopHoc;
 
-    public LopHoc(String maLopHoc, List<SinhVien> sinhViens) {
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="mssv")
+    private Set<SinhVien> sinhViens;
+
+    public LopHoc(String maLopHoc, Set<SinhVien> sinhViens) {
         this.maLopHoc = maLopHoc;
         this.sinhViens = sinhViens;
     }
@@ -19,11 +28,11 @@ public class LopHoc {
         this.maLopHoc = maLopHoc;
     }
 
-    public List<SinhVien> getSinhViens() {
+    public Set<SinhVien> getSinhViens() {
         return sinhViens;
     }
 
-    public void setSinhViens(List<SinhVien> sinhViens) {
+    public void setSinhViens(Set<SinhVien> sinhViens) {
         this.sinhViens = sinhViens;
     }
 }

@@ -1,18 +1,26 @@
 package com.dat.studentmanager.pojo;
 
-import java.util.List;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
-public class MonHoc {
-    String maMonHoc;
-    String tenMonHoc;
-    String phongHoc;
-    List<SinhVien> sinhViens;
+@Entity
+@Table(name = "MonHoc")
+public class MonHoc implements Serializable {
+    @Id
+    @Column(name = "maMonHoc")
+    private String maMonHoc;
+    @Column(name = "tenMonHoc")
+    private String tenMonHoc;
+    @Column(name = "phongHoc")
+    private String phongHoc;
+    @ManyToMany(mappedBy = "monHocs")
+    private Set<SinhVien> sinhViens;
 
-    public MonHoc(String maMonHoc, String tenMonHoc, String phongHoc, List<SinhVien> sinhViens) {
+    public MonHoc(String maMonHoc, String tenMonHoc, String phongHoc) {
         this.maMonHoc = maMonHoc;
         this.tenMonHoc = tenMonHoc;
         this.phongHoc = phongHoc;
-        this.sinhViens = sinhViens;
     }
 
     public String getMaMonHoc() {
@@ -39,11 +47,11 @@ public class MonHoc {
         this.phongHoc = phongHoc;
     }
 
-    public List<SinhVien> getSinhViens() {
+    public Set<SinhVien> getSinhViens() {
         return sinhViens;
     }
 
-    public void setSinhViens(List<SinhVien> sinhViens) {
+    public void setSinhViens(Set<SinhVien> sinhViens) {
         this.sinhViens = sinhViens;
     }
 }

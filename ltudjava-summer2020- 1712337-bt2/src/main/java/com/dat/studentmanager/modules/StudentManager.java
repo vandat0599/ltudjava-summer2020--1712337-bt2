@@ -18,9 +18,7 @@ public class StudentManager extends JFrame {
     }
 
     public static void main(String[] args){
-        Session session = HibernateUtil.getSessionFactory()
-                .getCurrentSession();
-
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         System.out.println("session = " + session);
         JFrame frame = new StudentManager("Student Manager");
         frame.setVisible(true);

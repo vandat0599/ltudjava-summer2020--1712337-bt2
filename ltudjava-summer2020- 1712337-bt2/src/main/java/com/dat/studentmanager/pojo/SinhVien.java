@@ -1,23 +1,35 @@
 package com.dat.studentmanager.pojo;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
-public class SinhVien extends User implements Serializable {
-    String mssv;
-    String hoTen;
-    String gioiTinh;
-    String cmnd;
-    List<MonHoc> monHocs;
-    String maLopHoc;
+@Entity
+@Table(name = "SinhVien")
+public class SinhVien implements Serializable {
+    @Id
+    @Column(name = "mssv")
+    private String mssv;
+    @Column(name = "hoTen")
+    private String hoTen;
+    @Column(name = "gioiTinh")
+    private String gioiTinh;
+    @Column(name = "cmnd")
+    private String cmnd;
+    @Column(name = "maLopHoc")
+    private String maLopHoc;
 
-    public SinhVien(int id, String userName, String passWord, String permission, String mssv, String hoTen, String gioiTinh, String cmnd, List<MonHoc> monHocs, String maLopHoc) {
-        super(id, userName, passWord, permission);
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="MonHoc_SinhVien", joinColumns={@JoinColumn(referencedColumnName="mssv")}
+            , inverseJoinColumns={@JoinColumn(referencedColumnName="maMonHoc")})
+    private Set<MonHoc> monHocs;
+
+
+    public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, String maLopHoc) {
         this.mssv = mssv;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.cmnd = cmnd;
-        this.monHocs = monHocs;
         this.maLopHoc = maLopHoc;
     }
 
@@ -53,19 +65,19 @@ public class SinhVien extends User implements Serializable {
         this.cmnd = cmnd;
     }
 
-    public List<MonHoc> getMonHocs() {
-        return monHocs;
-    }
-
-    public void setMonHocs(List<MonHoc> monHocs) {
-        this.monHocs = monHocs;
-    }
-
     public String getMaLopHoc() {
         return maLopHoc;
     }
 
     public void setMaLopHoc(String maLopHoc) {
         this.maLopHoc = maLopHoc;
+    }
+
+    public Set<MonHoc> getMonHocs() {
+        return monHocs;
+    }
+
+    public void setMonHocs(Set<MonHoc> monHocs) {
+        this.monHocs = monHocs;
     }
 }
