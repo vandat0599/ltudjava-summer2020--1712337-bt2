@@ -17,9 +17,8 @@ public class LopHoc implements Serializable {
 
     public LopHoc(){}
 
-    public LopHoc(String maLopHoc, Set<SinhVien> sinhViens) {
+    public LopHoc(String maLopHoc) {
         this.maLopHoc = maLopHoc;
-        this.sinhViens = sinhViens;
     }
 
     public String getMaLopHoc() {

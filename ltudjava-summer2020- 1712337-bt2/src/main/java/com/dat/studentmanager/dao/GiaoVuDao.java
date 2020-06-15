@@ -1,7 +1,11 @@
 package com.dat.studentmanager.dao;
 
 import com.dat.studentmanager.pojo.*;
+import com.dat.studentmanager.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GiaoVuDao implements UserDao<GiaoVu>, Dao<GiaoVu> {
@@ -62,19 +66,41 @@ public class GiaoVuDao implements UserDao<GiaoVu>, Dao<GiaoVu> {
 
     }
 
-    public void create(GiaoVu giaoVu) {
-
+    public void create(GiaoVu value) {
+        //check exist before create
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        session.save(value);
+        tx.commit();
+        System.out.println("Create GiaoVu Successful");
     }
 
     public List<GiaoVu> getList() {
-        return null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List data = session.createQuery("FROM User").list();
+        List<GiaoVu> results = new ArrayList<GiaoVu>();
+        for (Object item : data) {
+            results.add((GiaoVu) item);
+        }
+        tx.commit();
+        return results;
     }
 
-    public void update(GiaoVu giaoVu) {
-
+    public void update(GiaoVu value) {
+        //check exist before
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        session.update(value);
+        tx.commit();
+        System.out.println("update GiaoVu Successful");
     }
 
-    public void delete(GiaoVu giaoVu) {
-
+    public void delete(GiaoVu value) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(value);
+        tx.commit();
+        System.out.println("delete GiaoVu Successful");
     }
 }
