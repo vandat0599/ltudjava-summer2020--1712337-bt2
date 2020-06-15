@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 @Table(name = "LopHoc")
 public class LopHoc implements Serializable {
     @Id
     @Column(name = "maLopHoc")
     private String maLopHoc;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="mssv")
+    @OneToMany(mappedBy = "lopHoc")
     private Set<SinhVien> sinhViens;
 
     public LopHoc(){}

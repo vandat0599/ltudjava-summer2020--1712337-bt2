@@ -16,22 +16,24 @@ public class SinhVien implements Serializable {
     private String gioiTinh;
     @Column(name = "cmnd")
     private String cmnd;
-    @Column(name = "maLopHoc")
-    private String maLopHoc;
+
+    @ManyToOne
+    @JoinColumn(name="maLopHoc")
+    private LopHoc lopHoc;
 
     @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="MonHoc_SinhVien", joinColumns={@JoinColumn(referencedColumnName="mssv")}
-            , inverseJoinColumns={@JoinColumn(referencedColumnName="maMonHoc")})
+    @JoinTable(name="MonHoc_SinhVien", joinColumns={@JoinColumn(name="mssv")}
+            , inverseJoinColumns={@JoinColumn(name="maMonHoc")})
     private Set<MonHoc> monHocs;
 
     public SinhVien(){}
 
-    public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, String maLopHoc) {
+    public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, LopHoc lopHoc) {
         this.mssv = mssv;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.cmnd = cmnd;
-        this.maLopHoc = maLopHoc;
+        this.lopHoc = lopHoc;
     }
 
     public String getMssv() {
@@ -66,12 +68,12 @@ public class SinhVien implements Serializable {
         this.cmnd = cmnd;
     }
 
-    public String getMaLopHoc() {
-        return maLopHoc;
+    public LopHoc getLopHoc() {
+        return lopHoc;
     }
 
-    public void setMaLopHoc(String maLopHoc) {
-        this.maLopHoc = maLopHoc;
+    public void setMaLopHoc(LopHoc lopHoc) {
+        this.lopHoc = lopHoc;
     }
 
     public Set<MonHoc> getMonHocs() {

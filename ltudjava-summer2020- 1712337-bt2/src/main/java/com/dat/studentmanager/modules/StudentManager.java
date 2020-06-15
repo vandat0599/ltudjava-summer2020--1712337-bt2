@@ -1,5 +1,7 @@
 package com.dat.studentmanager.modules;
 
+import com.dat.studentmanager.pojo.LopHoc;
+import com.dat.studentmanager.pojo.MonHoc;
 import com.dat.studentmanager.pojo.SinhVien;
 import com.dat.studentmanager.util.HibernateUtil;
 import org.hibernate.Session;
@@ -23,14 +25,12 @@ public class StudentManager extends JFrame {
 
     public static void main(String[] args){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        System.out.println("session = " + session);
+        System.out.println("ok");
         Transaction tx = session.beginTransaction();
-        List sinhViens = session.createQuery("FROM SinhVien").list();
-        for (Iterator iterator = sinhViens.iterator(); iterator.hasNext();){
-            SinhVien employee = (SinhVien) iterator.next();
-            System.out.print("mssv: " + employee.getMssv());
-            System.out.print("cmnd: " + employee.getCmnd());
-            System.out.println("gioi tinh: " + employee.getGioiTinh());
+        List data = session.createQuery("FROM MonHoc").list();
+        for (Iterator iterator = data.iterator(); iterator.hasNext();){
+            MonHoc dataList = (MonHoc) iterator.next();
+            System.out.println(dataList.getSinhViens().size());
         }
         tx.commit();
     }
