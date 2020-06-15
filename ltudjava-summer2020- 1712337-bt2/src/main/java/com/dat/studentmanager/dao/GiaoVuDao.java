@@ -2,7 +2,9 @@ package com.dat.studentmanager.dao;
 
 import com.dat.studentmanager.pojo.*;
 
-public class GiaoVuDao implements UserDao<GiaoVu> {
+import java.util.List;
+
+public class GiaoVuDao implements UserDao<GiaoVu>, Dao<GiaoVu> {
 
     public void dangXuat(GiaoVu giaoVu) {
 
@@ -57,6 +59,22 @@ public class GiaoVuDao implements UserDao<GiaoVu> {
     }
 
     public void xemDanhSachPhucKhao(){
+
+    }
+
+    public void create(GiaoVu giaoVu) {
+
+    }
+
+    public List<GiaoVu> getList() {
+        return null;
+    }
+
+    public void update(GiaoVu giaoVu) {
+
+    }
+
+    public void delete(GiaoVu giaoVu) {
 
     }
 }
