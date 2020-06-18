@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MonHocDao implements Dao<MonHoc> {
-
+	
     public void create(MonHoc monHoc) {
         //check exist before create
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
