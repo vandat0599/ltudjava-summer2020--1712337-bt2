@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.query.Query;
 
 public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
 
@@ -48,6 +49,7 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         List<SinhVien> results = new ArrayList<SinhVien>();
         for (Object item : data) {
             results.add((SinhVien) item);
+            System.out.println("MonHoc size: " + ((SinhVien) item).getMonHocs().size());
         }
         tx.commit();
         return results;
@@ -65,7 +67,8 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
     public void delete(SinhVien sinhVien) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        session.delete(sinhVien);
+        Query query = session.createSQLQuery("delete from SinhVien where mssv = \"" + sinhVien.getMssv() + "\"");
+        query.executeUpdate();
         tx.commit();
         System.out.println("delete SinhVien Successful");
     }

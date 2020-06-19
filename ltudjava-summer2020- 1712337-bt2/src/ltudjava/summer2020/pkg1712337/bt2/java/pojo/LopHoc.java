@@ -2,6 +2,7 @@ package ltudjava.summer2020.pkg1712337.bt2.java.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,9 @@ public class LopHoc implements Serializable {
 
     @OneToMany(mappedBy = "lopHoc")
     private Set<SinhVien> sinhViens;
+    
+    @ManyToMany(mappedBy = "lopHocs")
+    private Set<MonHoc> monHocs = new HashSet<>();;
 
     public LopHoc(){}
 
@@ -35,5 +39,9 @@ public class LopHoc implements Serializable {
 
     public void setSinhViens(Set<SinhVien> sinhViens) {
         this.sinhViens = sinhViens;
+    }
+    
+    public Set<MonHoc> getMonHocs(){
+        return monHocs;
     }
 }

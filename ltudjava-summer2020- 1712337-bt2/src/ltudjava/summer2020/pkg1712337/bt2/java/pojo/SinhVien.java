@@ -2,6 +2,7 @@ package ltudjava.summer2020.pkg1712337.bt2.java.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,7 +25,7 @@ public class SinhVien implements Serializable {
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="MonHoc_SinhVien", joinColumns={@JoinColumn(name="mssv")}
             , inverseJoinColumns={@JoinColumn(name="maMonHoc")})
-    private Set<MonHoc> monHocs;
+    private Set<MonHoc> monHocs = new HashSet<>();;
 
     public SinhVien(){}
 

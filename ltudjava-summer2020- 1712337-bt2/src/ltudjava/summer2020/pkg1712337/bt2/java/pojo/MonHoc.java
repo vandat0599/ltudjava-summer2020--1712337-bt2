@@ -2,6 +2,7 @@ package ltudjava.summer2020.pkg1712337.bt2.java.pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,11 @@ public class MonHoc implements Serializable {
     @Column(name = "phongHoc")
     private String phongHoc;
     @ManyToMany(mappedBy = "monHocs")
-    private Set<SinhVien> sinhViens;
+    private Set<SinhVien> sinhViens = new HashSet<>();
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="LopHoc_MonHoc", joinColumns={@JoinColumn(name="maMonHoc")}
+            , inverseJoinColumns={@JoinColumn(name="maLopHoc")})
+    private Set<MonHoc> lopHocs = new HashSet<>();;
 
     public MonHoc(){}
 

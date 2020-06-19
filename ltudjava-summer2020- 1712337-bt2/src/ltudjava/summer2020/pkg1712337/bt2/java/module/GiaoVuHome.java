@@ -27,21 +27,86 @@ public class GiaoVuHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        qlsvButton = new javax.swing.JButton();
+        qltkbButton = new javax.swing.JButton();
+        qlLopHocButton = new javax.swing.JButton();
+        qlDiemButton = new javax.swing.JButton();
+        doimkButton = new javax.swing.JButton();
+        dangXuatButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        qlsvButton.setText("Quản lý sinh viên");
+        qlsvButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qlsvButtonActionPerformed(evt);
+            }
+        });
+
+        qltkbButton.setText("Quản lý thời khóa biểu");
+        qltkbButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qltkbButtonActionPerformed(evt);
+            }
+        });
+
+        qlLopHocButton.setText("Quản lý lớp học");
+
+        qlDiemButton.setText("Quản lý điểm");
+
+        doimkButton.setText("Đổi mật khẩu");
+
+        dangXuatButton.setText("Đăng xuất");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dangXuatButton)
+                    .addComponent(qltkbButton)
+                    .addComponent(qlsvButton)
+                    .addComponent(qlLopHocButton)
+                    .addComponent(qlDiemButton)
+                    .addComponent(doimkButton))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(qlsvButton)
+                .addGap(18, 18, 18)
+                .addComponent(qltkbButton)
+                .addGap(18, 18, 18)
+                .addComponent(qlLopHocButton)
+                .addGap(18, 18, 18)
+                .addComponent(qlDiemButton)
+                .addGap(26, 26, 26)
+                .addComponent(doimkButton)
+                .addGap(18, 18, 18)
+                .addComponent(dangXuatButton)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void qlsvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlsvButtonActionPerformed
+        // TODO add your handling code here:
+        QLSV f = new QLSV();
+        this.setVisible(false);
+        f.setVisible(true);
+    }//GEN-LAST:event_qlsvButtonActionPerformed
+
+    private void qltkbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qltkbButtonActionPerformed
+        // TODO add your handling code here:
+        QLTKB t = new QLTKB();
+        this.setVisible(false);
+        t.setVisible(true);
+    }//GEN-LAST:event_qltkbButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +144,11 @@ public class GiaoVuHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dangXuatButton;
+    private javax.swing.JButton doimkButton;
+    private javax.swing.JButton qlDiemButton;
+    private javax.swing.JButton qlLopHocButton;
+    private javax.swing.JButton qlsvButton;
+    private javax.swing.JButton qltkbButton;
     // End of variables declaration//GEN-END:variables
 }
