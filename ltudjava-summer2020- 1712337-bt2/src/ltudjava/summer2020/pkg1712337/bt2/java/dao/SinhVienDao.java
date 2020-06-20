@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
 import org.hibernate.query.Query;
 
 public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
@@ -38,6 +39,7 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(sinhVien);
+        session.save(new User(sinhVien.getMssv(), sinhVien.getMssv()));
         session.flush();
         tx.commit();
         System.out.println("Create SinhVien Successful");
@@ -50,6 +52,26 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         List<SinhVien> results = new ArrayList<SinhVien>();
         for (Object item : data) {
             results.add((SinhVien) item);
+        }
+        tx.commit();
+        return results;
+    }
+    
+    public List<SinhVien> getSinhVienByMaLopMaMon(String maLop, String maMon){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        String query = "from SinhVien";
+        List data = session.createQuery(query).list();
+        if (!maLop.equals("All")){
+            query = "from SinhVien where lopHoc.maLopHoc = :maLop";
+            data = session.createQuery(query).
+                    setParameter("maLop", maLop).
+                    list();
+        }
+        
+        List<SinhVien> results = new ArrayList<SinhVien>();
+        for (Object item : data) {
+            results.add((SinhVien)item);
         }
         tx.commit();
         return results;

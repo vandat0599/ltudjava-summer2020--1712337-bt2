@@ -5,6 +5,8 @@
  */
 package ltudjava.summer2020.pkg1712337.bt2.java.module;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +22,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.LopHocDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.SinhVienDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.LopHoc;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
 
 /**
@@ -64,6 +68,8 @@ public class QLSV extends javax.swing.JFrame {
         addButton = new java.awt.Button();
         refreshButton = new javax.swing.JButton();
         maLopComboBox = new javax.swing.JComboBox<>();
+        comboBoxLopShow = new javax.swing.JComboBox<>();
+        comboBoxMaMonHoc = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +126,10 @@ public class QLSV extends javax.swing.JFrame {
 
         maLopComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        comboBoxLopShow.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        comboBoxMaMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,45 +160,55 @@ public class QLSV extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(refreshButton)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(comboBoxLopShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboBoxMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(backButton)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(textFieldMssv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(textFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(textFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(textFieldCMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(maLopComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(textFieldMssv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(textFieldHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(textFieldGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(textFieldCMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(maLopComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(importButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(refreshButton))
-                        .addGap(0, 67, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(refreshButton))
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxLopShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -277,8 +297,55 @@ public class QLSV extends javax.swing.JFrame {
     }
     
     private void reloadData(){
+        reloadTable("All", "All");
+        final LopHocDao lopHocDao = new LopHocDao();
+        List<LopHoc> lhs = lopHocDao.getList();
+        String[] lhData = new String[lhs.size()];
+        String[] lhDataShowing = new String[lhs.size() + 1];
+        lhDataShowing[0] = "All";
+        for (int i=0;i<lhs.size();i++){
+            lhData[i] = lhs.get(i).getMaLopHoc();
+            lhDataShowing[i + 1] = lhs.get(i).getMaLopHoc();
+        }
+        maLopComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(lhData));
+        MonHocDao monHocDao = new MonHocDao();
+        List<MonHoc> monHocs = lopHocDao.getMonHocByMaLop("All");
+        String[] mhData = new String[monHocs.size() + 1];
+        mhData[0] = "All";
+        for (int i=0;i<monHocs.size();i++){
+            mhData[i + 1] = monHocs.get(i).getMaMonHoc();
+        }
+        comboBoxMaMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(mhData));
+        comboBoxLopShow.setModel(new javax.swing.DefaultComboBoxModel<>(lhDataShowing));
+        comboBoxLopShow.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+//                reloadData();
+                List<MonHoc> monHocs = lopHocDao.getMonHocByMaLop(comboBoxLopShow.getSelectedItem().toString());
+                String[] mhData = new String[monHocs.size() + 1];
+                mhData[0] = "All";
+                for (int i=0;i<monHocs.size();i++){
+                    mhData[i + 1] = monHocs.get(i).getMaMonHoc();
+                }
+                comboBoxMaMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(mhData));
+                reloadTable(comboBoxLopShow.getSelectedItem().toString(), comboBoxMaMonHoc.getSelectedItem().toString());
+            }
+        });
+        
+        comboBoxMaMonHoc.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+//                reloadData();
+                reloadTable(comboBoxLopShow.getSelectedItem().toString(), comboBoxMaMonHoc.getSelectedItem().toString());
+            }
+        });
+    }
+    
+    private void reloadTable(String maLop, String maMon){
         SinhVienDao dao = new SinhVienDao();
-        List<SinhVien> svData = dao.getList();
+        List<SinhVien> svData = dao.getSinhVienByMaLopMaMon(maLop, maMon);
         String[][] data = new String[svData.size()][5];
         for (int i=0;i<svData.size();i++){
             data[i][0] = String.valueOf(i+1);
@@ -293,13 +360,6 @@ public class QLSV extends javax.swing.JFrame {
                 "STT", "MSSV", "Họ Tên", "Giới Tính", "CMND"
             }
         ));
-        LopHocDao lopHocDao = new LopHocDao();
-        List<LopHoc> lhs = lopHocDao.getList();
-        String[] lhData = new String[lhs.size()];
-        for (int i=0;i<lhs.size();i++){
-            lhData[i] = lhs.get(i).getMaLopHoc();
-        }
-        maLopComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(lhData));
     }
     
     private SinhVien getSinhVienFromForm(){
@@ -322,6 +382,8 @@ public class QLSV extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button addButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JComboBox<String> comboBoxLopShow;
+    private javax.swing.JComboBox<String> comboBoxMaMonHoc;
     private javax.swing.JFileChooser csvChooser;
     private java.awt.Button importButton;
     private javax.swing.JLabel jLabel1;
