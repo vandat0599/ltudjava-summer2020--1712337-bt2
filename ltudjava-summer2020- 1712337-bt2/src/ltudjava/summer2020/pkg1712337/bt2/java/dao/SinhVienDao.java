@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
 import org.hibernate.query.Query;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
 
 public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
 
@@ -63,10 +65,29 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         String query = "from SinhVien";
         List data = session.createQuery(query).list();
         if (!maLop.equals("All")){
-            query = "from SinhVien where lopHoc.maLopHoc = :maLop";
-            data = session.createQuery(query).
+            if (maMon.equals("All")){
+                query = "from SinhVien where lopHoc.maLopHoc = :maLop";
+                data = session.createQuery(query).
+                        setParameter("maLop", maLop).
+                        list();
+            }else{
+                query = "select s from SinhVien s, MonHoc m where s.lopHoc.maLopHoc = m.lopHoc.maLopHoc and s.lopHoc.maLopHoc = :maLop and m.maMonHoc = :maMon";
+                data = session.createQuery(query).
                     setParameter("maLop", maLop).
+                    setParameter("maMon", maMon).
                     list();
+            }
+        }else{
+            if (maMon.equals("All")){
+                query = "from SinhVien";
+                data = session.createQuery(query).
+                        list();
+            }else{
+                query = "select s from SinhVien s, MonHoc m where s.lopHoc.maLopHoc = m.lopHoc.maLopHoc and m.maMonHoc = :maMon";
+                data = session.createQuery(query).
+                    setParameter("maMon", maMon).
+                    list();
+            }
         }
         
         List<SinhVien> results = new ArrayList<SinhVien>();
