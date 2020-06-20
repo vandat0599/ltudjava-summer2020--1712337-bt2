@@ -53,6 +53,11 @@ public class GiaoVuHome extends javax.swing.JFrame {
         qlLopHocButton.setText("Quản lý lớp học");
 
         qlDiemButton.setText("Quản lý điểm");
+        qlDiemButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qlDiemButtonActionPerformed(evt);
+            }
+        });
 
         doimkButton.setText("Đổi mật khẩu");
 
@@ -107,6 +112,13 @@ public class GiaoVuHome extends javax.swing.JFrame {
         this.setVisible(false);
         t.setVisible(true);
     }//GEN-LAST:event_qltkbButtonActionPerformed
+
+    private void qlDiemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlDiemButtonActionPerformed
+        // TODO add your handling code here:
+        QLDIEM d = new QLDIEM();
+        this.setVisible(false);
+        d.setVisible(true);
+    }//GEN-LAST:event_qlDiemButtonActionPerformed
 
     /**
      * @param args the command line arguments

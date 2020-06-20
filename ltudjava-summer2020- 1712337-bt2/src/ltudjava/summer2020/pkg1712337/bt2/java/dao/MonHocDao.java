@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
 
 public class MonHocDao implements Dao<MonHoc> {
 	
@@ -29,6 +30,20 @@ public class MonHocDao implements Dao<MonHoc> {
         }
         tx.commit();
         return results;
+    }
+    
+    public MonHoc getMonHocByMaMonHoc(String maMonHoc) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List data = session.createQuery("FROM MonHoc where maMonHoc = :maMonHoc")
+                .setParameter("maMonHoc", maMonHoc)
+                .list();
+        List<MonHoc> results = new ArrayList<MonHoc>();
+        for (Object item : data) {
+            results.add((MonHoc) item);
+        }
+        tx.commit();
+        return results.get(0);
     }
 
     public void update(MonHoc monHoc) {

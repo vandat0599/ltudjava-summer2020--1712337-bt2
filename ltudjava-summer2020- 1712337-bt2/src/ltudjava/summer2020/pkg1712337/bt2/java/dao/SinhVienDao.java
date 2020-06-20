@@ -59,6 +59,20 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         return results;
     }
     
+    public SinhVien getSinhVienByMSSV(String mssv) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List data = session.createQuery("FROM SinhVien where mssv = :mssv")
+                .setParameter("mssv", mssv)
+                .list();
+        List<SinhVien> results = new ArrayList<SinhVien>();
+        for (Object item : data) {
+            results.add((SinhVien) item);
+        }
+        tx.commit();
+        return results.get(0);
+    }
+    
     public List<SinhVien> getSinhVienByMaLopMaMon(String maLop, String maMon){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();

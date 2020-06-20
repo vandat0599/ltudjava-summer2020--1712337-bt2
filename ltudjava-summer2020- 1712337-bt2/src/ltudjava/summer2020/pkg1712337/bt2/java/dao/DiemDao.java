@@ -29,6 +29,18 @@ public class DiemDao implements Dao<Diem> {
         tx.commit();
         return results;
     }
+    
+    public List<Diem> getDiemByMaLopMaMon(String maLop, String maMon) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List data = session.createQuery("FROM Diem").list();
+        List<Diem> results = new ArrayList<Diem>();
+        for (Object item : data) {
+            results.add((Diem) item);
+        }
+        tx.commit();
+        return results;
+    }
 
     public void update(Diem value) {
         //check exist before
