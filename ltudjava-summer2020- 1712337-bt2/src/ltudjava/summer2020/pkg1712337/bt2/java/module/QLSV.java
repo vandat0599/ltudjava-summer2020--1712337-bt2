@@ -225,7 +225,9 @@ public class QLSV extends javax.swing.JFrame {
             } catch (IOException e) {
                     e.printStackTrace();
             }
-            lopHocDao.create(new LopHoc(list.get(0)));
+            if (!lopHocDao.isExistLopHoc(list.get(0))){
+                lopHocDao.create(new LopHoc(list.get(0)));
+            }
             for (int i =2;i < list.size();i++){
                 String[] line = list.get(i).split(",");
                 sinhVienDao.create(new SinhVien(line[1], line[2], line[3], line[4], new LopHoc(list.get(0))));

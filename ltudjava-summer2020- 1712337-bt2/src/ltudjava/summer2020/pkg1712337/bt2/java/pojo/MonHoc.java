@@ -15,19 +15,18 @@ public class MonHoc implements Serializable {
     private String tenMonHoc;
     @Column(name = "phongHoc")
     private String phongHoc;
-    @ManyToMany(mappedBy = "monHocs")
-    private Set<SinhVien> sinhViens = new HashSet<>();
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="LopHoc_MonHoc", joinColumns={@JoinColumn(name="maMonHoc")}
-            , inverseJoinColumns={@JoinColumn(name="maLopHoc")})
-    private Set<MonHoc> lopHocs = new HashSet<>();;
+    
+    @ManyToOne
+    @JoinColumn(name="maLopHoc")
+    private LopHoc lopHoc;
 
     public MonHoc(){}
 
-    public MonHoc(String maMonHoc, String tenMonHoc, String phongHoc) {
+    public MonHoc(String maMonHoc, String tenMonHoc, String phongHoc, LopHoc lopHoc) {
         this.maMonHoc = maMonHoc;
         this.tenMonHoc = tenMonHoc;
         this.phongHoc = phongHoc;
+        this.lopHoc = lopHoc;
     }
 
     public String getMaMonHoc() {
@@ -54,11 +53,4 @@ public class MonHoc implements Serializable {
         this.phongHoc = phongHoc;
     }
 
-    public Set<SinhVien> getSinhViens() {
-        return sinhViens;
-    }
-
-    public void setSinhViens(Set<SinhVien> sinhViens) {
-        this.sinhViens = sinhViens;
-    }
 }

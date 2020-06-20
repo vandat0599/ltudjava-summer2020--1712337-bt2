@@ -38,6 +38,7 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(sinhVien);
+        session.flush();
         tx.commit();
         System.out.println("Create SinhVien Successful");
     }
@@ -49,7 +50,6 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         List<SinhVien> results = new ArrayList<SinhVien>();
         for (Object item : data) {
             results.add((SinhVien) item);
-            System.out.println("MonHoc size: " + ((SinhVien) item).getMonHocs().size());
         }
         tx.commit();
         return results;
@@ -60,6 +60,7 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.update(sinhVien);
+        session.flush();
         tx.commit();
         System.out.println("update SinhVien Successful");
     }

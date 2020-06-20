@@ -13,12 +13,6 @@ public class LopHoc implements Serializable {
     @Column(name = "maLopHoc")
     private String maLopHoc;
 
-    @OneToMany(mappedBy = "lopHoc")
-    private Set<SinhVien> sinhViens;
-    
-    @ManyToMany(mappedBy = "lopHocs")
-    private Set<MonHoc> monHocs = new HashSet<>();;
-
     public LopHoc(){}
 
     public LopHoc(String maLopHoc) {
@@ -31,17 +25,5 @@ public class LopHoc implements Serializable {
 
     public void setMaLopHoc(String maLopHoc) {
         this.maLopHoc = maLopHoc;
-    }
-
-    public Set<SinhVien> getSinhViens() {
-        return sinhViens;
-    }
-
-    public void setSinhViens(Set<SinhVien> sinhViens) {
-        this.sinhViens = sinhViens;
-    }
-    
-    public Set<MonHoc> getMonHocs(){
-        return monHocs;
     }
 }

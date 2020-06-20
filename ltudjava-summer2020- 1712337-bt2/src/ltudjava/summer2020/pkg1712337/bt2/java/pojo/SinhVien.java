@@ -22,11 +22,6 @@ public class SinhVien implements Serializable {
     @JoinColumn(name="maLopHoc")
     private LopHoc lopHoc;
 
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="MonHoc_SinhVien", joinColumns={@JoinColumn(name="mssv")}
-            , inverseJoinColumns={@JoinColumn(name="maMonHoc")})
-    private Set<MonHoc> monHocs = new HashSet<>();;
-
     public SinhVien(){}
 
     public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, LopHoc lopHoc) {
@@ -75,13 +70,5 @@ public class SinhVien implements Serializable {
 
     public void setMaLopHoc(LopHoc lopHoc) {
         this.lopHoc = lopHoc;
-    }
-
-    public Set<MonHoc> getMonHocs() {
-        return monHocs;
-    }
-
-    public void setMonHocs(Set<MonHoc> monHocs) {
-        this.monHocs = monHocs;
     }
 }

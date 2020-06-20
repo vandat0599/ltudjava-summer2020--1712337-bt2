@@ -36,22 +36,29 @@ public class LopHocDao implements Dao<LopHoc> {
     public List<MonHoc> getMonHocByMaLop(String maLop){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        String query = "From LopHoc";
-        if (!maLop.equals("All")){
-            query = "select * from LopHoc where maLopHoc = \"" + maLop + "\"";
-        }
+        String query = "from MonHoc";
         List data = session.createQuery(query).list();
+        if (!maLop.equals("All")){
+            query = "from MonHoc where maLopHoc = :maLop";
+            data = session.createQuery(query).setParameter("maLop", maLop).list();
+        }
+        
         List<MonHoc> results = new ArrayList<MonHoc>();
         for (Object item : data) {
-            LopHoc m = (LopHoc) item;
-            System.out.println("Mon hoc size: " + m.getMonHocs().size());
-            Set<MonHoc> monhocs = m.getMonHocs();
-            for (Object mh: monhocs){
-                results.add((MonHoc)mh);
-            }
+            results.add((MonHoc)item);
         }
         tx.commit();
         return results;
+    }
+    
+    public boolean isExistLopHoc(String maLop){
+        List<LopHoc> lophocs = getList();
+        for (int i=0;i<lophocs.size();i++){
+            if (lophocs.get(i).getMaLopHoc().equals(maLop)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void update(LopHoc lopHoc) {
