@@ -14,12 +14,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDiemDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.SinhVienDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhaoDiem;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
+import ltudjava.summer2020.pkg1712337.bt2.java.util.FileUtils;
 
 /**
  *
@@ -117,7 +123,7 @@ public class QLPK extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonSubmitPK))
                     .addComponent(jLabel3))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,6 +202,26 @@ public class QLPK extends javax.swing.JFrame {
                 "STT", "MSSV", "Họ Tên", "Môn", "Cột điểm cần phúc khảo", "Điểm mong muốn", "Lý do", "Tình trạng"
             }
         ));
+        jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                PhucKhaoDiemDao dao = new PhucKhaoDiemDao();
+                PhucKhaoDao phucKhaoDao = new PhucKhaoDao();
+                PhucKhao bangPhucKhao = phucKhaoDao.getPhucKhaoByMaMonHoc(jTable.getValueAt(jTable.getSelectedRow(), 3).toString());
+                PhucKhaoDiem phucKhaoDiem = new PhucKhaoDiem(
+                        jTable.getValueAt(jTable.getSelectedRow(), 1).toString(), 
+                        jTable.getValueAt(jTable.getSelectedRow(), 2).toString(), 
+                        bangPhucKhao, 
+                        jTable.getValueAt(jTable.getSelectedRow(), 4).toString(), 
+                        Float.valueOf(jTable.getValueAt(jTable.getSelectedRow(), 5).toString()), 
+                        jTable.getValueAt(jTable.getSelectedRow(), 6).toString(), 
+                        jTable.getValueAt(jTable.getSelectedRow(), 7).toString());
+                setVisible(false);
+                ChinhSuaPhucKhao c = new ChinhSuaPhucKhao();
+                c.setPhucKhaoDiem(phucKhaoDiem);
+                c.setVisible(true);
+            }
+        });
     }
     
     /**
