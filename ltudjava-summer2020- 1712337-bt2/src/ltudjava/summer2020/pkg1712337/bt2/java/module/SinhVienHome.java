@@ -59,6 +59,11 @@ public class SinhVienHome extends javax.swing.JFrame {
         });
 
         dangXuatButton.setText("Đăng Xuất");
+        dangXuatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dangXuatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,6 +100,10 @@ public class SinhVienHome extends javax.swing.JFrame {
 
     private void doiMKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doiMKButtonActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        DoiMK m = new DoiMK();
+        m.setVisible(true);
+        
     }//GEN-LAST:event_doiMKButtonActionPerformed
 
     private void xemDiemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemDiemButtonActionPerformed
@@ -103,6 +112,13 @@ public class SinhVienHome extends javax.swing.JFrame {
         SVXemDiem sv = new SVXemDiem();
         sv.setVisible(true);
     }//GEN-LAST:event_xemDiemButtonActionPerformed
+
+    private void dangXuatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangXuatButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Login l = new Login();
+        l.setVisible(true);
+    }//GEN-LAST:event_dangXuatButtonActionPerformed
 
     /**
      * @param args the command line arguments

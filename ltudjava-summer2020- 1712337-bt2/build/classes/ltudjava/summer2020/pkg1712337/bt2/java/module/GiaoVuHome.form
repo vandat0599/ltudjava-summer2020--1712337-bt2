@@ -83,11 +83,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i m&#x1ead;t kh&#x1ea9;u"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doimkButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="dangXuatButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dangXuatButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

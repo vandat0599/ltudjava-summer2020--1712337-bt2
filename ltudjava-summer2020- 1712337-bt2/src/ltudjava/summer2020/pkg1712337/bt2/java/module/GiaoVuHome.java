@@ -57,8 +57,18 @@ public class GiaoVuHome extends javax.swing.JFrame {
         });
 
         doimkButton.setText("Đổi mật khẩu");
+        doimkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doimkButtonActionPerformed(evt);
+            }
+        });
 
         dangXuatButton.setText("Đăng xuất");
+        dangXuatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dangXuatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,6 +123,20 @@ public class GiaoVuHome extends javax.swing.JFrame {
         this.setVisible(false);
         d.setVisible(true);
     }//GEN-LAST:event_qlDiemButtonActionPerformed
+
+    private void dangXuatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dangXuatButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Login l = new Login();
+        l.setVisible(true);
+    }//GEN-LAST:event_dangXuatButtonActionPerformed
+
+    private void doimkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doimkButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        DoiMK m = new DoiMK();
+        m.setVisible(true);
+    }//GEN-LAST:event_doimkButtonActionPerformed
 
     /**
      * @param args the command line arguments

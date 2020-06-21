@@ -1,1 +1,1 @@
-{"id":9,"userName":"giaovu","passWord":"giaovu","permission":"gv"}
+{"id":9,"userName":"giaovu","passWord":"giaovu123","permission":"gv"}
