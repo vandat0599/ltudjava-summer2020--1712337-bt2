@@ -34,14 +34,14 @@ public class PhucKhaoDiem {
     String cotDiem;
     
     @Column(name = "diemMongMuon")
-    String diemMongMuon;
+    float diemMongMuon;
     
     @Column(name = "lyDo")
     String lyDo;
 
     public PhucKhaoDiem(){}
 
-    public PhucKhaoDiem(String mssv, String hoTen, PhucKhao bangPhucKhao, String cotDiem, String diemMongMuon, String lyDo) {
+    public PhucKhaoDiem(String mssv, String hoTen, PhucKhao bangPhucKhao, String cotDiem, float diemMongMuon, String lyDo) {
         this.mssv = mssv;
         this.hoTen = hoTen;
         this.bangPhucKhao = bangPhucKhao;
@@ -84,11 +84,11 @@ public class PhucKhaoDiem {
         this.cotDiem = cotDiem;
     }
 
-    public String getDiemMongMuon() {
+    public float getDiemMongMuon() {
         return diemMongMuon;
     }
 
-    public void setDiemMongMuon(String diemMongMuon) {
+    public void setDiemMongMuon(float diemMongMuon) {
         this.diemMongMuon = diemMongMuon;
     }
 

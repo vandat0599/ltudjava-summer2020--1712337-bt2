@@ -16,8 +16,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDiemDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhaoDiem;
 
 /**
  *
@@ -170,6 +172,29 @@ public class QLPK extends javax.swing.JFrame {
             mhData[i + 1] = monHocs.get(i).getMaMonHoc();
         }
         jComboBoxMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(mhData));
+        reloadTable();
+    }
+    
+    private void reloadTable(){
+        PhucKhaoDiemDao dao = new PhucKhaoDiemDao();
+        List<PhucKhaoDiem> svData = dao.getList();
+        String[][] data = new String[svData.size()][8];
+        int dau = 0;
+        for (int i=0;i<svData.size();i++){
+            data[i][0] = String.valueOf(i+1);
+            data[i][1] = svData.get(i).getMssv();
+            data[i][2] = svData.get(i).getHoTen();
+            data[i][3] = svData.get(i).getBangPhucKhao().getMaMonHoc();
+            data[i][4] = svData.get(i).getCotDiem();
+            data[i][5] = String.valueOf(svData.get(i).getDiemMongMuon());
+            data[i][6] = svData.get(i).getLyDo();
+        }
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            data,
+            new String [] {
+                "STT", "MSSV", "Họ Tên", "Môn", "Cột điểm cần phúc khảo", "Điểm mong muốn", "Lý do"
+            }
+        ));
     }
     
     /**
