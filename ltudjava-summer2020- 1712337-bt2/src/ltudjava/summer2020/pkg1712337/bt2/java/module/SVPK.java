@@ -6,8 +6,17 @@
 package ltudjava.summer2020.pkg1712337.bt2.java.module;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDiemDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.SinhVienDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhaoDiem;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
+import ltudjava.summer2020.pkg1712337.bt2.java.util.FileUtils;
 
 /**
  *
@@ -65,6 +74,11 @@ public class SVPK extends javax.swing.JFrame {
         jLabel4.setText("Lý do");
 
         jButtonSubmit.setText("Tạo Phúc Khảo");
+        jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +141,20 @@ public class SVPK extends javax.swing.JFrame {
         this.setVisible(false);
         (new SinhVienHome()).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
+        // TODO add your handling code here:
+        PhucKhaoDiemDao dao = new PhucKhaoDiemDao();
+        PhucKhaoDao phucKhaoDao = new PhucKhaoDao();
+        SinhVien sv = (new SinhVienDao()).getSinhVienByMSSV(FileUtils.getObject(User.class, "user.txt").getUserName());
+        PhucKhao bangPhucKhao = phucKhaoDao.getPhucKhaoByMaMonHoc(jComboBoxMon.getSelectedItem().toString());
+        if (bangPhucKhao != null){
+            dao.create(new PhucKhaoDiem(sv.getMssv(), sv.getHoTen(), bangPhucKhao, jComboBoxN.getSelectedItem().toString(), Float.valueOf(jTextFieldWant.getText()), jTextFieldCause.getText(), "Chưa xem"));
+        }else{
+            JOptionPane.showMessageDialog(null, "Something went wrong, please try again!", "Error!" , JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void reloadData(){
         MonHocDao monHocDao = new MonHocDao();

@@ -56,6 +56,23 @@ public class PhucKhaoDao implements Dao<PhucKhao>{
         tx.commit();
         return results;
     }
+    
+    public PhucKhao getPhucKhaoByMaMonHoc(String maMonHoc){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List data = session.createQuery("FROM PhucKhao where maMonHoc = :maMonHoc")
+                .setParameter("maMonHoc", maMonHoc)
+                .list();
+        List<PhucKhao> results = new ArrayList<PhucKhao>();
+        for (Object item : data) {
+            results.add((PhucKhao) item);
+        }
+        tx.commit();
+        if (results.size() > 0){
+            return results.get(0);
+        }
+        return null;
+    }
 
     @Override
     public void update(PhucKhao t) {

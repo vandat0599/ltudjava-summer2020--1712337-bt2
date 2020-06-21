@@ -154,6 +154,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#x1ea1;o Ph&#xfa;c Kh&#x1ea3;o"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSubmitActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -188,11 +188,12 @@ public class QLPK extends javax.swing.JFrame {
             data[i][4] = svData.get(i).getCotDiem();
             data[i][5] = String.valueOf(svData.get(i).getDiemMongMuon());
             data[i][6] = svData.get(i).getLyDo();
+            data[i][7] = svData.get(i).getTinhTrang();
         }
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             data,
             new String [] {
-                "STT", "MSSV", "Họ Tên", "Môn", "Cột điểm cần phúc khảo", "Điểm mong muốn", "Lý do"
+                "STT", "MSSV", "Họ Tên", "Môn", "Cột điểm cần phúc khảo", "Điểm mong muốn", "Lý do", "Tình trạng"
             }
         ));
     }

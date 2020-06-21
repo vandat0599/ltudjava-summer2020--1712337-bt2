@@ -29,9 +29,6 @@ public class PhucKhao {
     
     @Column(name = "ngayKetThuc")
     Date ngayKetThuc;
-    
-    @Column(name = "tinhTrang")
-    Date tinhTrang;
 
     public PhucKhao(){}
     

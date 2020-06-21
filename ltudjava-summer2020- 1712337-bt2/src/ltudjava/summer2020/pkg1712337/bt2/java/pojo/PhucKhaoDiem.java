@@ -5,6 +5,7 @@
  */
 package ltudjava.summer2020.pkg1712337.bt2.java.pojo;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,17 +39,23 @@ public class PhucKhaoDiem {
     
     @Column(name = "lyDo")
     String lyDo;
+    
+    @Column(name = "tinhTrang")
+    String tinhTrang;
 
     public PhucKhaoDiem(){}
 
-    public PhucKhaoDiem(String mssv, String hoTen, PhucKhao bangPhucKhao, String cotDiem, float diemMongMuon, String lyDo) {
+    public PhucKhaoDiem(String mssv, String hoTen, PhucKhao bangPhucKhao, String cotDiem, float diemMongMuon, String lyDo, String tinhTrang) {
         this.mssv = mssv;
         this.hoTen = hoTen;
         this.bangPhucKhao = bangPhucKhao;
         this.cotDiem = cotDiem;
         this.diemMongMuon = diemMongMuon;
         this.lyDo = lyDo;
+        this.tinhTrang = tinhTrang;
     }
+
+    
 
     
     
@@ -98,6 +105,14 @@ public class PhucKhaoDiem {
 
     public void setLyDo(String lyDo) {
         this.lyDo = lyDo;
+    }
+
+    public String getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(String tinhTrang) {
+        this.tinhTrang = tinhTrang;
     }
     
     
