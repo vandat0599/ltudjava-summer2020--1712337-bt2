@@ -41,7 +41,7 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(sinhVien);
-        session.save(new User(sinhVien.getMssv(), sinhVien.getMssv()));
+        session.save(new User(sinhVien.getMssv(), sinhVien.getMssv(), "sv"));
         session.flush();
         tx.commit();
         System.out.println("Create SinhVien Successful");
@@ -70,7 +70,10 @@ public class SinhVienDao implements UserDao<SinhVien>, Dao<SinhVien> {
             results.add((SinhVien) item);
         }
         tx.commit();
-        return results.get(0);
+        if (results.size() > 0){
+            return results.get(0);
+        }
+        return null;
     }
     
     public List<SinhVien> getSinhVienByMaLopMaMon(String maLop, String maMon){

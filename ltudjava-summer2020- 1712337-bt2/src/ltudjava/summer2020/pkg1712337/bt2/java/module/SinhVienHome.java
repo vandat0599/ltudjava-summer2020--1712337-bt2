@@ -5,6 +5,10 @@
  */
 package ltudjava.summer2020.pkg1712337.bt2.java.module;
 
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
+import ltudjava.summer2020.pkg1712337.bt2.java.util.FileUtils;
+
 /**
  *
  * @author user
@@ -16,6 +20,7 @@ public class SinhVienHome extends javax.swing.JFrame {
      */
     public SinhVienHome() {
         initComponents();
+        reloadData();
     }
 
     /**
@@ -27,31 +32,77 @@ public class SinhVienHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xemDiemButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        phucKhaoButton = new javax.swing.JButton();
+        doiMKButton = new javax.swing.JButton();
+        dangXuatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("SinhVien");
+        xemDiemButton.setText("Xem Điểm");
+        xemDiemButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xemDiemButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Sinh Viên: 1712337");
+
+        phucKhaoButton.setText("Phúc Khảo");
+
+        doiMKButton.setText("Đổi Mật Khẩu");
+        doiMKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doiMKButtonActionPerformed(evt);
+            }
+        });
+
+        dangXuatButton.setText("Đăng Xuất");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jLabel1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addGap(247, 247, 247)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dangXuatButton)
+                    .addComponent(doiMKButton)
+                    .addComponent(phucKhaoButton)
+                    .addComponent(xemDiemButton)
+                    .addComponent(jLabel1))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(xemDiemButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(phucKhaoButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(doiMKButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dangXuatButton)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void doiMKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doiMKButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doiMKButtonActionPerformed
+
+    private void xemDiemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemDiemButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SVXemDiem sv = new SVXemDiem();
+        sv.setVisible(true);
+    }//GEN-LAST:event_xemDiemButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,8 +138,17 @@ public class SinhVienHome extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void reloadData(){
+        User sv = FileUtils.getObject(User.class, "user.txt");
+        jLabel1.setText("Sinh Viên: " + sv.getUserName());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dangXuatButton;
+    private javax.swing.JButton doiMKButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton phucKhaoButton;
+    private javax.swing.JButton xemDiemButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,8 @@ import java.util.stream.Stream;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.DiemDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.LopHocDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
@@ -74,6 +76,9 @@ public class QLDIEM extends javax.swing.JFrame {
         textFieldTong = new javax.swing.JTextField();
         textFieldCK = new javax.swing.JTextField();
         comboBoxMaMonFill = new javax.swing.JComboBox<>();
+        buttonUpdate = new javax.swing.JButton();
+        labelDau = new javax.swing.JLabel();
+        labelRot = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +110,7 @@ public class QLDIEM extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelSinhVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tabelSinhVien);
 
         importButton.setLabel("Import");
@@ -136,6 +142,17 @@ public class QLDIEM extends javax.swing.JFrame {
 
         comboBoxMaMonFill.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        buttonUpdate.setText("Update");
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateActionPerformed(evt);
+            }
+        });
+
+        labelDau.setText("Đậu: 0%");
+
+        labelRot.setText("Rớt: 100%");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,22 +175,27 @@ public class QLDIEM extends javax.swing.JFrame {
                             .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
-                                .addGap(20, 20, 20))
                             .addComponent(textFieldMssv, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(textFieldGK, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(textFieldKhac, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(textFieldTong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(textFieldCK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(comboBoxMaMonFill, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboBoxMaMonFill, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buttonUpdate)
+                                    .addComponent(refreshButton))
+                                .addGap(10, 10, 10)))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelDau)
+                        .addGap(68, 68, 68)
+                        .addComponent(labelRot)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(comboBoxLopShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(comboBoxMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,15 +208,15 @@ public class QLDIEM extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxLopShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxMaMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDau)
+                    .addComponent(labelRot))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refreshButton))
+                    .addComponent(refreshButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backButton)
                         .addGap(18, 18, 18)
@@ -223,13 +245,11 @@ public class QLDIEM extends javax.swing.JFrame {
                             .addComponent(textFieldTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(27, 27, 27))
+                            .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(buttonUpdate)
+                .addGap(2, 2, 2))
         );
 
         pack();
@@ -256,7 +276,9 @@ public class QLDIEM extends javax.swing.JFrame {
 
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
         // TODO add your handling code here:
+        DiemDao diemDao = new DiemDao();
         LopHocDao lopHocDao = new LopHocDao();
+        MonHocDao monHocDao = new MonHocDao();
         SinhVienDao sinhVienDao = new SinhVienDao();
         if (csvChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             List<String> list = new ArrayList<>();
@@ -266,19 +288,32 @@ public class QLDIEM extends javax.swing.JFrame {
             } catch (IOException e) {
                     e.printStackTrace();
             }
-            if (!lopHocDao.isExistLopHoc(list.get(0))){
+            String[] line1 = list.get(0).split("-");
+            if (!lopHocDao.isExistLopHoc(line1[0])){
                 lopHocDao.create(new LopHoc(list.get(0)));
+            }
+            if (monHocDao.getMonHocByMaMonHoc(line1[1]) == null){
+                monHocDao.create(new MonHoc(line1[1], "", "", new LopHoc(line1[0])));
             }
             for (int i =2;i < list.size();i++){
                 String[] line = list.get(i).split(",");
-                sinhVienDao.create(new SinhVien(line[1], line[2], line[3], line[4], new LopHoc(list.get(0))));
+                SinhVien sv = new SinhVien(line[1], line[2], "", "", new LopHoc(line1[0]));
+                if (sinhVienDao.getSinhVienByMSSV(line[1]) == null){
+                    sinhVienDao.create(sv);
+                }
+                diemDao.create(new Diem(sv, monHocDao.getMonHocByMaMonHoc(line1[1]) , Float.valueOf(line[3]), Float.valueOf(line[4]), Float.valueOf(line[5]), Float.valueOf(line[6])));
             }
-        } else {
-            // user changed their mind
-            JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!", "Error!" , JOptionPane.INFORMATION_MESSAGE);
         }
         reloadData();
     }//GEN-LAST:event_importButtonActionPerformed
+
+    
+    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
+        // TODO add your handling code here:
+        DiemDao dao = new DiemDao();
+        dao.update(getDiemFromForm());
+        reloadData();
+    }//GEN-LAST:event_buttonUpdateActionPerformed
 
     
     
@@ -371,6 +406,7 @@ public class QLDIEM extends javax.swing.JFrame {
         DiemDao dao = new DiemDao();
         List<Diem> svData = dao.getDiemByMaLopMaMon(maLop, maMon);
         String[][] data = new String[svData.size()][8];
+        int dau = 0;
         for (int i=0;i<svData.size();i++){
             data[i][0] = String.valueOf(i+1);
             data[i][1] = svData.get(i).getSinhVien().getMssv();
@@ -381,10 +417,13 @@ public class QLDIEM extends javax.swing.JFrame {
             data[i][6] = String.valueOf(svData.get(i).getDiemTong());
             if (svData.get(i).getDiemTong() >= 5.0){
                 data[i][7] = "Đậu";
+                dau += 1;
             }else{
                 data[i][7] = "Rớt";
             }
         }
+        labelDau.setText("Đậu: " + Math.round(dau*1.0/(svData.size())*100) + "%");
+        labelRot.setText("Rớt: " + Math.round((svData.size() - dau)*1.0/(svData.size())*100) + "%");
         tabelSinhVien.setModel(new javax.swing.table.DefaultTableModel(
             data,
             new String [] {
@@ -415,6 +454,7 @@ public class QLDIEM extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button addButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> comboBoxLopShow;
     private javax.swing.JComboBox<String> comboBoxMaMonFill;
     private javax.swing.JComboBox<String> comboBoxMaMonHoc;
@@ -427,6 +467,8 @@ public class QLDIEM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDau;
+    private javax.swing.JLabel labelRot;
     private javax.swing.JButton refreshButton;
     private javax.swing.JTable tabelSinhVien;
     private javax.swing.JTextField textFieldCK;

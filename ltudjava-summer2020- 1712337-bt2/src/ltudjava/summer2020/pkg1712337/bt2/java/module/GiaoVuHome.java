@@ -29,7 +29,6 @@ public class GiaoVuHome extends javax.swing.JFrame {
 
         qlsvButton = new javax.swing.JButton();
         qltkbButton = new javax.swing.JButton();
-        qlLopHocButton = new javax.swing.JButton();
         qlDiemButton = new javax.swing.JButton();
         doimkButton = new javax.swing.JButton();
         dangXuatButton = new javax.swing.JButton();
@@ -49,8 +48,6 @@ public class GiaoVuHome extends javax.swing.JFrame {
                 qltkbButtonActionPerformed(evt);
             }
         });
-
-        qlLopHocButton.setText("Quản lý lớp học");
 
         qlDiemButton.setText("Quản lý điểm");
         qlDiemButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +70,6 @@ public class GiaoVuHome extends javax.swing.JFrame {
                     .addComponent(dangXuatButton)
                     .addComponent(qltkbButton)
                     .addComponent(qlsvButton)
-                    .addComponent(qlLopHocButton)
                     .addComponent(qlDiemButton)
                     .addComponent(doimkButton))
                 .addContainerGap(81, Short.MAX_VALUE))
@@ -86,14 +82,12 @@ public class GiaoVuHome extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(qltkbButton)
                 .addGap(18, 18, 18)
-                .addComponent(qlLopHocButton)
-                .addGap(18, 18, 18)
                 .addComponent(qlDiemButton)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(doimkButton)
                 .addGap(18, 18, 18)
                 .addComponent(dangXuatButton)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         pack();
@@ -159,7 +153,6 @@ public class GiaoVuHome extends javax.swing.JFrame {
     private javax.swing.JButton dangXuatButton;
     private javax.swing.JButton doimkButton;
     private javax.swing.JButton qlDiemButton;
-    private javax.swing.JButton qlLopHocButton;
     private javax.swing.JButton qlsvButton;
     private javax.swing.JButton qltkbButton;
     // End of variables declaration//GEN-END:variables

@@ -44,7 +44,7 @@ public class FileUtils {
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
 		        dataString = myReader.nextLine();
-		        System.out.println(dataString);
+		        System.out.println("data get: " + dataString);
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {

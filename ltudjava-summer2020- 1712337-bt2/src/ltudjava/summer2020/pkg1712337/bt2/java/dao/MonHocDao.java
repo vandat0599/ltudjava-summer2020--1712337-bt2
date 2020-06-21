@@ -43,7 +43,10 @@ public class MonHocDao implements Dao<MonHoc> {
             results.add((MonHoc) item);
         }
         tx.commit();
-        return results.get(0);
+        if (results.size() > 0){
+            return results.get(0);
+        }
+        return null;
     }
 
     public void update(MonHoc monHoc) {
