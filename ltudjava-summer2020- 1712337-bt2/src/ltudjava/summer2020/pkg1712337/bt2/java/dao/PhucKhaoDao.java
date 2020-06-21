@@ -7,6 +7,7 @@ package ltudjava.summer2020.pkg1712337.bt2.java.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.User;
@@ -23,12 +24,24 @@ public class PhucKhaoDao implements Dao<PhucKhao>{
 
     @Override
     public void create(PhucKhao t) {
+        if (t.getMaMonHoc().equals("All")){
+            MonHocDao monHocDao = new MonHocDao();
+            List<MonHoc> monHocs = monHocDao.getList();
+            for (int i=0;i<monHocs.size();i++){
+                createPK(new PhucKhao(monHocs.get(i).getMaMonHoc(), t.getNgayBatDau(), t.getNgayKetThuc()));
+            }
+        }else{
+            createPK(t);
+        }
+    }
+    
+    private void createPK(PhucKhao t){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(t);
         session.flush();
         tx.commit();
-        System.out.println("Create PhucKhao Successful");
+        System.out.println("Create PhucKhao: " + t.getMaMonHoc() +" Successful");
     }
 
     @Override

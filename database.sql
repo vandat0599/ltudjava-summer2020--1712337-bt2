@@ -8,15 +8,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
--- -----------------------------------------------------
 -- Schema student_manager
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `student_manager` ;
@@ -25,14 +16,13 @@ DROP SCHEMA IF EXISTS `student_manager` ;
 -- Schema student_manager
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `student_manager` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`PhucKhao`
+-- Table `student_manager`.`PhucKhao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PhucKhao` ;
+DROP TABLE IF EXISTS `student_manager`.`PhucKhao` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PhucKhao` (
+CREATE TABLE IF NOT EXISTS `student_manager`.`PhucKhao` (
   `maMonHoc` VARCHAR(45) NOT NULL,
   `ngayBatDau` DATE NULL,
   `ngayKetThuc` DATE NULL,
@@ -42,11 +32,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PhucKhaoDiem`
+-- Table `student_manager`.`PhucKhaoDiem`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PhucKhaoDiem` ;
+DROP TABLE IF EXISTS `student_manager`.`PhucKhaoDiem` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PhucKhaoDiem` (
+CREATE TABLE IF NOT EXISTS `student_manager`.`PhucKhaoDiem` (
   `mssv` VARCHAR(7) NOT NULL,
   `hoTen` VARCHAR(45) NULL,
   `maMonHoc` VARCHAR(45) NOT NULL,
@@ -57,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`PhucKhaoDiem` (
   INDEX `fk_PhucKhaoDiem_PhucKhao_idx` (`maMonHoc` ASC) VISIBLE,
   CONSTRAINT `fk_PhucKhaoDiem_PhucKhao`
     FOREIGN KEY (`maMonHoc`)
-    REFERENCES `mydb`.`PhucKhao` (`maMonHoc`)
+    REFERENCES `student_manager`.`PhucKhao` (`maMonHoc`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

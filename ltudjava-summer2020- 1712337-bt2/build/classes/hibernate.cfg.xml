@@ -16,5 +16,7 @@
         <mapping class="ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc" />
         <mapping class="ltudjava.summer2020.pkg1712337.bt2.java.pojo.User" />
         <mapping class="ltudjava.summer2020.pkg1712337.bt2.java.pojo.SinhVien" />
+        <mapping class="ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao" />
+        <mapping class="ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhaoDiem" />
     </session-factory>
 </hibernate-configuration>

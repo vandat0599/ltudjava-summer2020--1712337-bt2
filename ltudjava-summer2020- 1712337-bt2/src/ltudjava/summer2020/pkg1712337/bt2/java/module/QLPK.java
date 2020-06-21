@@ -7,9 +7,17 @@ package ltudjava.summer2020.pkg1712337.bt2.java.module;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import ltudjava.summer2020.pkg1712337.bt2.java.dao.MonHocDao;
+import ltudjava.summer2020.pkg1712337.bt2.java.dao.PhucKhaoDao;
 import ltudjava.summer2020.pkg1712337.bt2.java.pojo.MonHoc;
+import ltudjava.summer2020.pkg1712337.bt2.java.pojo.PhucKhao;
 
 /**
  *
@@ -22,6 +30,7 @@ public class QLPK extends javax.swing.JFrame {
      */
     public QLPK() {
         initComponents();
+        reloadData();
     }
 
     /**
@@ -140,8 +149,16 @@ public class QLPK extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonSubmitPKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitPKActionPerformed
-        // TODO add your handling code here:
-        
+        try {
+            // TODO add your handling code here:
+            PhucKhaoDao phucKhaoDao = new PhucKhaoDao();
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            phucKhaoDao.create(new PhucKhao(jComboBoxMonHoc.getSelectedItem().toString(), simpleDateFormat.parse(jTextFieldNgayBD.getText()), simpleDateFormat.parse(jTextFieldNgayKT.getText())));
+        } catch (ParseException ex) {
+            Logger.getLogger(QLPK.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Làm ơn nhập đúng format Date", "Error!" , JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonSubmitPKActionPerformed
 
     private void reloadData(){
